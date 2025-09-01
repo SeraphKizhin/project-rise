@@ -1,11 +1,11 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
+#include <random>
 using namespace std;
 
 int main(){
-  srand(time(0));
+    mt19937 generator(random_device{}());
+    uniform_int_distribution<int>dist(1, 21);
 
-  int dice = rand() % 6 + 1;
-  cout << "You rolled: " << dice;
+    cout << "You rolled: " << dist(generator); 
+    return 0;
 }
