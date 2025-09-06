@@ -31,4 +31,9 @@ public class Player{
         this.health = health;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
 }
