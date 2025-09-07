@@ -8,7 +8,6 @@ public class Game {
         System.out.print("Enter player name: ");
         String name = sc.nextLine();
         Player player1 = new Player(name);
-        Dice playerDice1 = new Dice(player1);
 
         do {
             System.out.print("Op: ");
@@ -16,33 +15,37 @@ public class Game {
             op = sc.next().charAt(0);
 
             switch (op) {
-                case 'r':
-                    System.out.println("Rolling...");
-                    playerDice1.roll(3);
-                    break;
                 case 'f':
                     Roaming roaming = new Roaming(player1);
-                    System.out.println("Roaming...");
+                    System.out.print("Roaming");
+                    for(int i = 0; i < 3; i++){
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e){
+                            e.printStackTrace();
+                        }
+                        System.out.print(".");
+                    }
+                    System.out.println();
                     roaming.roam();
                     break;
                 case 'q':
-                    System.out.println("Returning to village...");
+                    System.out.print("Returning to village");
+                    for(int i = 0; i < 3; i++){
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e){
+                            e.printStackTrace();
+                        }
+                        System.out.print(".");
+                    }
                     break;
                 default:
                     System.out.println("Unknown Operation");
             }
         } while (op != 'q');
         
-
-        // Player Seraph = new Player("Seraph");
-        // Dice player1 = new Dice(Seraph);
-
-        // player1.roll(3);
-
-        // Player Kizhin = new Player("Kizhin");
-        // Dice player2 = new Dice(Kizhin);
-
-        // player2.roll(2);
-    
+        sc.close();
     }
 }
+
