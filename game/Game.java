@@ -4,8 +4,10 @@ public class Game {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         char op;
-        System.out.println("Skip Story? Y/N");
+        System.out.print("Skip Story? Y/N \n// ");
         char skip = sc.next().charAt(0);
+        System.out.println();
+
         if(Character.toLowerCase(skip) == 'n') {
             StoryPrinter.StoryTyper("In the days before the fall, the world flourished with unyielding light.", 70); 
             StoryPrinter.StoryTyper("The rivers sang with purity, the forests swayed in endless green, and the stars shone to guide us.", 70); 
@@ -20,7 +22,6 @@ public class Game {
             StoryPrinter.StoryTyper("Cities crumbled, seas boiled, and where once light dwelled, now only shadow and silence remain.", 70);
             System.out.println();
             StoryPrinter.StoryTyper("The Cataclysm had begun.", 200);
-            StoryPrinter.StoryTyper("Now... we endure.", 150);
             System.out.println();
             StoryPrinter.StoryTyper("You stand in Mykitiakos, the final bastion of mankind.", 70);
             StoryPrinter.StoryTyper("Walls of stone shield us from the endless night, but the void gnaws at our gates.", 70);
@@ -40,51 +41,62 @@ public class Game {
         }
         sc.nextLine();
 
-        System.out.println();
         StoryPrinter.StoryTyper(".", 1000);
         StoryPrinter.StoryTyper(".", 1000);
         StoryPrinter.StoryTyper(".", 1000);
         System.out.println();
 
-        StoryPrinter.StoryTyper("Young soldier, what is your name?", 70);
-        System.out.print("Enter player name: ");
+        StoryPrinter.StoryTyper("What is your name, recruit?", 70);
+        System.out.print("// Enter player name: ");
         String name = sc.nextLine();
         Player player1 = new Player(name);
 
+        System.out.println();
         String intro = player1.getName() + " huh... ";
 
         StoryPrinter.StoryTyper(intro, 70);
         StoryPrinter.StoryTyper("/The soldier studies you for a moment, his gaze weary yet steady./", 70);
-        StoryPrinter.StoryTyper("Keep your blade sharp and your heart sharper. In the void, its not just monsters youll face but also fear itself.", 70);
+        System.out.println();
+        StoryPrinter.StoryTyper("Keep your blade sharp and your heart sharper. In the void, its not just monsters youll face but fears itself.", 70);
+        System.out.println();
         StoryPrinter.StoryTyper("/He turns toward the the gate./", 70);
         StoryPrinter.StoryTyper("Open the gates!!", 70);
         System.out.println();
-        StoryPrinter.StoryTyper("/Heavy chains rattle to life, grinding against rusted gears./", 70);
-        StoryPrinter.StoryTyper("/The iron gate groans as it rises, each echoing clank swallowed by the silence beyond./", 70);
-        StoryPrinter.StoryTyper("/A breathless chill seeps through the widening crack, carrying whispers not meant for mortal ears./", 70);
-        StoryPrinter.StoryTyper("/The void stares back. Endless, suffocating, and alive with a presence that hungers./", 80);
+        StoryPrinter.StoryTyper("/Heavy chains rattle to life, grinding against rusted gears.", 70);
+        StoryPrinter.StoryTyper("The iron gate groans as it rises, each echoing clank swallowed by the silence beyond.", 70);
+        StoryPrinter.StoryTyper("A breathless chill seeps through the widening crack, carrying whispers not meant for mortal ears.", 70);
+        StoryPrinter.StoryTyper("The void stares back. Endless, suffocating, and alive with a presence that hungers./", 80);
         System.out.println();
         StoryPrinter.StoryTyper("/The soldier pats you in the shoulder./", 70);
-        StoryPrinter.StoryTyper("Godspeed... May the 3 founders; Myko, Amanita and Chantarelle be on your side.", skip);
+        StoryPrinter.StoryTyper("Godspeed... May the 3 founders be on your side.", 70);
+        System.out.println();
         StoryPrinter.StoryTyper("/He walks away, his shoulder heavy./", 70);
         System.out.println();
         StoryPrinter.StoryTyper("You have entered the void...", 200);
-        System.out.println();
 
         do {
-            System.out.print("What do you do? ");
+            System.out.println();
+            System.out.println("What do you do? ");
+            System.out.print("'h' Check Hp \t\t'f' Roam\n // ");
 
             op = sc.next().charAt(0);
-
+            
+            
             switch (op) {
+                case 'h':
+                    System.out.println();
+                    System.out.println("You have " + player1.getHealth() + " HP remaining.");
+                    System.out.println();
+                    break;
                 case 'f':
                     Roaming roaming = new Roaming(player1);
+                    System.out.println();
                     System.out.print("Roaming");
                     for(int i = 0; i < 3; i++){
-                        try {
-                            Thread.sleep(500);
+                        try {    
+                            Thread.sleep(250);
                         } catch (InterruptedException e){
-                            e.printStackTrace();
+                            Thread.currentThread().interrupt();
                         }
                         System.out.print(".");
                     }
@@ -97,7 +109,7 @@ public class Game {
                         try {
                             Thread.sleep(500);
                         } catch (InterruptedException e){
-                            e.printStackTrace();
+                            Thread.currentThread().interrupt();
                         }
                         System.out.print(".");
                     }
@@ -110,4 +122,3 @@ public class Game {
         sc.close();
     }
 }
-
