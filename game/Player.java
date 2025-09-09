@@ -1,18 +1,20 @@
 public class Player{
     private int health;
     private final int attack;
-    private final int shield;
     private final String name;
     private final int maxDice;
     private int diceAmount;
+    private final int maxDiceAmount;
+    private int maxHP;
 
     public Player(String name){
         this.name = name;
         health = 100;
         attack = 10;
-        shield = 10;
         maxDice = 20;
         diceAmount = 3;
+        maxDiceAmount = diceAmount;
+        maxHP = health;
     }
 
     public String getName(){
@@ -21,10 +23,6 @@ public class Player{
 
     public int getAttack(){
         return attack;
-    }
-
-    public int getShield(){
-        return shield;
     }
     
     public int getHealth(){
@@ -46,6 +44,28 @@ public class Player{
 
     public void setHealth(int health){
         this.health = health;
+    }
+
+    public void takeDamage(int n){
+        this.health = health - n;
+        if(health == 0){
+            System.out.println(name + "has died. Game Over");
+            System.exit(0);
+        }
+        System.out.println(name + " took " + n + " damage. " + health + " left!");
+
+    }
+
+    public void resetDice(){
+        this.diceAmount = maxDiceAmount;
+    }
+
+    public void setMaxHP(int maxHP){
+        this.maxHP = maxHP;
+    }
+
+    public int getMaxHP(){
+        return maxHP;
     }
 
     @Override
