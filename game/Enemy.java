@@ -37,11 +37,12 @@ public class Enemy {
 
     public static Enemy monsterChoose(int n){
         int monster = n;
-        if (monster == 1) {
-            return new Enemy("Bandit", 15, 3, 100, 10);
-        } else {
-            return  new Enemy("Goblin", 12, 2, 50, 10);
-        }
+        if (monster == 1) return new Enemy("Bandit", 15, 3, 100, 10);
+        if (monster == 0) return new Enemy("Goblin", 12, 2, 50, 10);
+        if (monster == 3) return new Enemy("Manifestation", 60, 1, 100, 10);
+        if (monster == 4) return new Enemy("Kobold", 15, 2, 50, 15);
+        if (monster == 5) return new Enemy("Voidling (minor)", 20, 3, 50, 5);
+        return new Enemy("null", 1, 1, 1, 1);
     }
 
     public void takeDamage(int n){
@@ -80,6 +81,10 @@ public class Enemy {
     
     public void setDiceAmount(int diceAmount){
         this.diceAmount = diceAmount;
+    }
+
+    public boolean isAlive() {
+        return health > 0;
     }
 
     @Override
