@@ -1,13 +1,16 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     public static void main(String[] args) {
+        Scenario.ruptureWeight = 1;
+
         Scanner sc = new Scanner(System.in);
         char op;
         System.out.print("Skip Story? Y/N \n// ");
         char skip = sc.next().charAt(0);
         System.out.println();
 
+        // STORY
         if(Character.toLowerCase(skip) == 'n') {
             StoryPrinter.StoryTyper("In the days before the fall, the world flourished with unyielding light.", 70); 
             StoryPrinter.StoryTyper("The rivers sang with purity, the forests swayed in endless green, and the stars shone to guide us.", 70); 
@@ -75,13 +78,17 @@ public class Game {
         StoryPrinter.StoryTyper("You have entered the void...", 200);
 
         do {
+            if(player1.getHealth() <= 0){
+                System.out.println("You have died. Game Over");
+                System.exit(0);
+            }
             System.out.println();
             System.out.println("What do you do? ");
             System.out.print("'h' Check Hp \t\t'f' Roam\n // ");
 
             op = sc.next().charAt(0);
             
-            
+            // USER CONTROL
             switch (op) {
                 case 'h':
                     System.out.println();
