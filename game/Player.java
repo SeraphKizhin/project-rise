@@ -1,11 +1,12 @@
 public class Player{
     private int health;
-    private final int attack;
+    private int attack;
     private final String name;
     private final int maxDice;
     private int diceAmount;
     private final int maxDiceAmount;
     private int maxHP;
+    private double critChance;
 
     public Player(String name){
         this.name = name;
@@ -15,6 +16,7 @@ public class Player{
         diceAmount = 3;
         maxDiceAmount = diceAmount;
         maxHP = health;
+        critChance = 0.1;
     }
 
     public String getName(){
@@ -49,7 +51,7 @@ public class Player{
     public void takeDamage(int n){
         this.health = health - n;
         if(health == 0){
-            System.out.println(name + "has died. Game Over");
+            System.out.println(name + " has died. Game Over");
             System.exit(0);
         }
         System.out.println(name + " took " + n + " damage. " + health + " left!");
@@ -66,6 +68,18 @@ public class Player{
 
     public int getMaxHP(){
         return maxHP;
+    }
+
+    public double getCritChance(){
+        return critChance;
+    }
+
+    public void setCritChance(double critChance){
+        this.critChance = critChance;
+    }
+
+    public void setAttack(int attack){
+        this.attack = attack;
     }
 
     @Override
